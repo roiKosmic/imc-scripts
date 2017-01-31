@@ -19,9 +19,11 @@
 			set ERROR_MESSAGE "TFTP upload failed: server is down or unreachable"
 			set ERROR_RESULT true
 		} -re "Upload running-config(.*)done" {
+		} -re $exec_prompt {
 		}
+		
 	}
-	expect $enable_prompt
+	#expect $enable_prompt
 	if { $ERROR_RESULT != "true" } { 
 		set WARNING_RESULT false
 	}
